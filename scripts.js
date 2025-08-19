@@ -7,19 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
   tg.ready();
   const user = tg.initDataUnsafe?.user;
   if (!user) {
-    console.warn('Нет initDataUnsafe.user. Вероятно, страница не запущена через WebApp.');
+    console.warn('Нет данных о пользователе. Вероятно, страница не запущена через WebApp.');
     return;
   }
   const nameEl = document.getElementById('user_name_show');
   const avatarEl = document.getElementById('user_avatar');
-  if (!nameEl || !avatarEl) {
-    console.error('Не найдены нужные DOM-элементы.');
-    return;
-  }
   nameEl.textContent = [user.first_name, user.last_name].filter(Boolean).join(' ');
   if (user.photo_url) {
     avatarEl.innerHTML = `<img src="${user.photo_url}" style="border-radius:5px;width:80px" alt="user photo">`;
   } else {
-    avatarEl.innerHTML = `<i class="fa-solid fa-circle-user fa-2x"></i>`;
+    // Простой текстовый fallback вместо иконки
+    avatarEl.textContent = "Нет фото";
   }
 });
