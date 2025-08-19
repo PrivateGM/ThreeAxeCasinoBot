@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const avatarEl = document.getElementById('user_avatar');
   nameEl.textContent = [user.first_name, user.last_name].filter(Boolean).join(' ');
   if (user.photo_url) {
-    avatarEl.innerHTML = `<img src="${user.photo_url}" style="border-radius:5px;width:80px" alt="user photo">`;
+    avatarEl.innerHTML = `<img src="${user.photo_url}" class="is-rounded" style=";width:80px" alt="user photo">`;
   } else {
     // Простой текстовый fallback вместо иконки
     avatarEl.textContent = "Нет фото";
